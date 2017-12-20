@@ -1,0 +1,32 @@
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Fish Information</h1>      
+    <p>Research All your Favorite Fish!!!</p>
+  </div>
+</div>
+<br>
+<h1 class="text-center">Fish Search</h1>
+<input [(ngModel)]="query" placeholder="Search Your Future Catch" class="form-control">
+<br>
+<br>
+<br>
+<ul><ng-container *ngFor="let fish of data | search:'fishName':query; let id= index;">
+  <h2>{{fish.fishName}}</h2>
+  <div>
+    <button type="button" style="background-color: #000000; color:rgb(255, 255, 255)" (click)="changeShowStatus(fish.fishName)">Fish Information</button>
+    <div class="box" *ngIf="showHide == fish.fishName">
+      {{fish.fishInfo}}
+      <br>
+      <br>
+      <img src="{{fish.fishPic}}" >
+
+    </div>
+  </div>
+</ng-container></ul>
+<br>
+<br>
+<div class="container-col-sm-4">
+  <img src="https://s3.amazonaws.com/american-rivers-website/wp-content/uploads/2016/02/24211322/Flint-River_credit-Tom-Wilson_header.jpg" class="img-responsive" style="width:100%" alt="Image">
+</div>
+<br>

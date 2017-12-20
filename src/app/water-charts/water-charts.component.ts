@@ -1,24 +1,30 @@
-import { Component } from '@angular/core';
-import { UserService } from './register/user.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../register/user.service';
 import { HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import * as xml2js from 'xml2js';
-import { Water } from './water-charts/waterlevel.model';
+import { Water } from './waterlevel.model';
+import { FilterPipe} from './filter.pipe';
+
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-water-charts',
+  templateUrl: './water-charts.component.html',
+  styleUrls: ['./water-charts.component.css']
 })
-export class AppComponent {
+export class WaterChartsComponent {
   title='app works';
   private apiUrl = 'https://waterservices.usgs.gov/nwis/iv/?stateCd=MO&format=json,1.1';
-  data: any = {};
+  data: WaterLevel[];
+  
 
  
   constructor(private http: HttpClient ,public userService:UserService){
     console.log('Here is Missouri')
     this.getData();
+   
+  
   }
   getData(){
      this.http.get<Water>(this.apiUrl).subscribe(data =>{
@@ -31,8 +37,7 @@ export class AppComponent {
 
        })
 
-       console.log("this is the list")
-       console.log(temp);
+      this.data = temp;
      })
   }
 }

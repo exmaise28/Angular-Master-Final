@@ -1,0 +1,21 @@
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Daily Weather and Water Information</h1>      
+    <p> New States Coming Soon!!!</p>
+  </div>
+</div>
+
+<iframe src="https://www.meteoblue.com/en/weather/widget/three?geoloc=detect&nocurrent=0&noforecast=0&days=5&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&layout=bright"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="width: 575px;height: 618px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/en/weather/forecast/week?utm_source=weather_widget&utm_medium=linkus&utm_content=three&utm_campaign=Weather%2BWidget" target="_blank">meteoblue</a></div>
+
+
+<div class="container text-center">
+  <h1>Missouri water Levels</h1>
+  <br>
+  <input [(ngModel)]="query" placeholder="search River" class="form-control">
+  <br>
+  <ng-container *ngFor="let item of data | filter:'name':query">
+    <h2>{{item.name}}</h2>
+    <h2>{{item.value}} FT. </h2>
+  </ng-container> 
+</div>

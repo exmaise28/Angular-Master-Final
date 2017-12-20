@@ -1,0 +1,26 @@
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Welcome, {{userService.user.firstName}}</h1>      
+    <p>Join the Club and Display your Trophies</p>
+  </div>
+</div>
+<image-upload 
+url="http://localhost:8080/upload/{{userService.user.username}}"
+buttonCaption="Click here to upload"
+>
+</image-upload>
+<br>
+<h1 class="text-center">Members-Trophies</h1>
+<br>
+<br>
+<ul><ng-container *ngFor="let files of data">
+    <h3>{{files.username}}</h3>
+  <img src="{{files.pic}}">
+  <br>
+  <br>
+  <br>
+  <br>
+</ng-container></ul>
+
+
